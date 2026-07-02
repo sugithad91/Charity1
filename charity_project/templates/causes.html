@@ -1,0 +1,226 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Causes - HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+   
+</head>
+<body class="bg-gray-50 font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="relative bg-white shadow-sm border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+                <span class="text-brand-dark-blue">■</span>
+                <span>HopeHands Foundation</span>
+            </div>
+            
+            <!-- Desktop Menu Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="hover:text-brand-dark-blue transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-brand-dark-blue transition">About Us</a>
+                <a href="{% url 'causes' %}" class="text-brand-dark-blue border-b-2 border-brand-dark-blue transition">Causes</a>
+                <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue transition">Donate</a>
+                <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+            <!-- Hamburger Icon Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-brand-dark-blue" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+            <a href="{% url 'home' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">About Us</a>
+            <a href="{% url 'causes' %}" class="text-brand-dark-blue py-1 border-b border-gray-50 transition">Causes</a>
+            <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Donate</a>
+            <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue py-1 transition">Contact</a>
+            <a href="{% url 'donate' %}" class="bg-brand-dark-blue text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+        </div>
+    </nav>
+
+    <!-- JavaScript Toggle Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Main Header Block -->
+    <header class="max-w-7xl mx-auto px-6 pt-16 pb-8 text-left">
+        <h1 class="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Our Causes</h1>
+        <p class="text-gray-800 text-base md:text-md max-w-4xl leading-relaxed">
+            Explore the various initiatives and projects we are dedicated to supporting. Your contribution can make a significant difference in the lives of those in need.
+        </p>
+    </header>
+
+    <!-- Causes Rows Section Container -->
+    <main class="max-w-7xl mx-auto px-6 pb-24 flex flex-col space-y-12">
+
+        <!-- Cause Item 1: Healthcare for Children -->
+        <section class="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center p-6 gap-8">
+            <!-- Illustration Graphic Vector Container -->
+            <div class="md:col-span-4 flex justify-center items-center">
+                <img src="{% static 'images/img16.png' %}" alt="Healthcare for Children Graphic" class="w-full max-w-xs md:max-w-full h-auto object-contain">
+            </div>
+            <!-- Text & CTA Content Block -->
+            <div class="md:col-span-8 flex flex-col h-full justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Healthcare for Children</h2>
+                    <div class="text-gray-800 text-sm md:text-base space-y-4 leading-relaxed font-light">
+                        <p>Many children lack access to basic healthcare, leading to preventable diseases and suffering. We aim to bridge this gap by providing comprehensive medical support.</p>
+                        <p>Your donation will help provide essential medical care, including surgeries, treatments, and rehabilitation, to children suffering from critical illnesses.</p>
+                    </div>
+                </div>
+                <!-- Action CTA Wrapper -->
+                <div class="flex justify-end mt-8">
+                    <a href="{% url 'donate' %}" class="bg-blue-900 text-white text-sm md:text-base font-semibold px-6 py-2.5 rounded-md hover:bg-blue-800 transition duration-200">
+                        Donate for this cause
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cause Item 2: Education for All -->
+        <section class="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center p-6 gap-8">
+            <!-- Illustration Graphic Vector Container -->
+            <div class="md:col-span-4 flex justify-center items-center">
+                <img src="{% static 'images/img17.png' %}" alt="Education for All Graphic" class="w-full max-w-xs md:max-w-full h-auto object-contain">
+            </div>
+            <!-- Text & CTA Content Block -->
+            <div class="md:col-span-8 flex flex-col h-full justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Education for All</h2>
+                    <div class="text-gray-800 text-sm md:text-base space-y-4 leading-relaxed font-light">
+                        <p>Education is a fundamental right, yet many children are deprived of it due to poverty. We strive to provide quality education and resources to these children.</p>
+                        <p>Your support will fund educational programs, school supplies, and mentorship opportunities for underprivileged children, helping them achieve their full potential.</p>
+                    </div>
+                </div>
+                <!-- Action CTA Wrapper -->
+                <div class="flex justify-end mt-8">
+                    <a href="{% url 'donate' %}" class="bg-blue-900 text-white text-sm md:text-base font-semibold px-6 py-2.5 rounded-md hover:bg-blue-800 transition duration-200">
+                        Donate for this cause
+                    </a>
+                </div>
+            </div>
+        </section>
+                <!-- Cause Item 3: Poverty Relief -->
+        <section class="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center p-6 gap-8">
+            <!-- Image Container -->
+            <div class="md:col-span-4 flex justify-center items-center overflow-hidden rounded-xl aspect-[4/3] w-full">
+                <img src="{% static 'images/img18.png' %}" alt="Poverty Relief Initiative" class="w-full h-full object-cover">
+            </div>
+            <!-- Text & CTA Content Block -->
+            <div class="md:col-span-8 flex flex-col h-full justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Poverty Relief</h2>
+                    <div class="text-gray-800 text-sm md:text-base space-y-4 leading-relaxed font-light">
+                        <p>Poverty affects millions, leading to hunger, homelessness, and lack of basic necessities. We work to alleviate poverty by providing essential resources and support.</p>
+                        <p>Your contribution will help us provide nutritious meals, clean water, and safe shelter to families struggling with poverty, ensuring their basic needs are met.</p>
+                    </div>
+                </div>
+                <!-- Action CTA Wrapper -->
+                <div class="flex justify-end mt-8">
+                    <a href="{% url 'donate' %}" class="bg-blue-900 text-white text-sm md:text-base font-semibold px-6 py-2.5 rounded-md hover:bg-blue-800 transition duration-200">
+                        Donate for this cause
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cause Item 4: Environmental Sustainability -->
+        <section class="bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center p-6 gap-8">
+            <!-- Image Container -->
+            <div class="md:col-span-4 flex justify-center items-center overflow-hidden rounded-xl aspect-[4/3] w-full">
+                <img src="{% static 'images/img19.png' %}" alt="Environmental Sustainability" class="w-full h-full object-cover">
+            </div>
+            <!-- Text & CTA Content Block -->
+            <div class="md:col-span-8 flex flex-col h-full justify-between">
+                <div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Environmental Sustainability</h2>
+                    <div class="text-gray-800 text-sm md:text-base space-y-4 leading-relaxed font-light">
+                        <p>Protecting our planet is crucial for future generations. We focus on environmental conservation and sustainability to ensure a healthy world for all.</p>
+                        <p>Your donation will support our efforts to protect the environment, promote sustainable practices, and raise awareness about climate change.</p>
+                    </div>
+                </div>
+                <!-- Action CTA Wrapper -->
+                <div class="flex justify-end mt-8">
+                    <a href="{% url 'donate' %}" class="bg-blue-900 text-white text-sm md:text-base font-semibold px-6 py-2.5 rounded-md hover:bg-blue-800 transition duration-200">
+                        Donate for this cause
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+         </main>
+         <footer class="bg-[#e5e7eb]/60 text-gray-500 py-10 mt-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Grid Navigation Links -->
+            <div class="grid grid-cols-2 md:grid-cols-5 text-center text-sm font-medium gap-y-4 gap-x-2 text-gray-600 mb-8">
+                <a href="#" class="hover:text-gray-900 transition">About Us</a>
+                <a href="#" class="hover:text-gray-900 transition">Our Programs</a>
+                <a href="#" class="hover:text-gray-900 transition">Volunteer</a>
+                <a href="#" class="hover:text-gray-900 transition">Donate</a>
+                <a href="#" class="hover:text-gray-900 transition">Contact</a>
+            </div>
+
+            <!-- Social Media Icons (Font Awesome) -->
+            <div class="flex justify-center items-center space-x-6 text-xl text-gray-400 mb-6">
+                <!-- Facebook -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <!-- Twitter/X -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="text-center text-xs text-gray-400 font-light tracking-wide">
+                © 2026 HopeHands Foundation. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+   
+
+</body>
+</html>

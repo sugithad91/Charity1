@@ -1,0 +1,173 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Causes - HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+   
+</head>
+<body class="bg-gray-50 font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="relative bg-white shadow-sm border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+                <span class="text-brand-dark-blue">■</span>
+                <span>HopeHands Foundation</span>
+            </div>
+            
+            <!-- Desktop Menu Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="hover:text-brand-dark-blue transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-brand-dark-blue transition">About Us</a>
+                <a href="{% url 'causes' %}" class="hover:text-brand-dark-blue transition">Causes</a>
+                <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue transition">Donate</a>
+                <a href="{% url 'contact' %}" class="text-brand-dark-blue border-b-2 border-brand-dark-blue transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+            <!-- Hamburger Icon Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-brand-dark-blue" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+            <a href="{% url 'home' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">About Us</a>
+            <a href="{% url 'causes' %}" class="text-brand-dark-blue py-1 border-b border-gray-50 transition">Causes</a>
+            <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Donate</a>
+            <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue py-1 transition">Contact</a>
+            <a href="{% url 'donate' %}" class="bg-brand-dark-blue text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+        </div>
+    </nav>
+
+    <!-- JavaScript Toggle Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+    <!-- Get In Touch Container -->
+<section class="max-w-6xl mx-auto px-6 py-12 text-center">
+    <h2 class="text-xl font-bold text-gray-900 mb-8">Get in Touch With Us</h2>
+    
+    <!-- Contact Info Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10">
+        <!-- Email Card -->
+        <div class="flex items-center justify-center space-x-3 bg-white border border-gray-200 rounded-lg p-3 shadow-xs">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <a href="mailto:support@hopehands.org" class="text-sm font-medium text-gray-800 hover:underline">support@hopehands.org</a>
+        </div>
+        <!-- Phone Card -->
+        <div class="flex items-center justify-center space-x-3 bg-white border border-gray-200 rounded-lg p-3 shadow-xs">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <span class="text-sm font-medium text-gray-800">+91 98765 43210</span>
+        </div>
+        <!-- Location Card -->
+        <div class="flex items-center justify-center space-x-3 bg-white border border-gray-200 rounded-lg p-3 shadow-xs">
+            <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <span class="text-sm font-medium text-gray-800">Chennai, India</span>
+        </div>
+    </div>
+
+    <!-- Map Container -->
+    <div class="w-full h-150 rounded-lg overflow-hidden border border-gray-200 shadow-xs mb-12">
+        <!-- Embedded Interactive OpenStreetMap Engine -->
+       <img class="w-full h-full border-0" 
+            src="{% static 'images/image3.png' %}"  alt="">
+    </div>
+
+    <!-- Support & Trust Badges Footer Grid -->
+    <div class="text-left max-w-5xl mx-auto">
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Support & Trust</h3>
+        <p class="text-sm text-gray-600 mb-6">We believe in transparency, trust, and people-powered change. Every volunteer helps us move closer to a better future.</p>
+        
+        <div class="flex flex-wrap gap-4">
+            <!-- Badge 1 -->
+            <div class="flex items-center space-x-2 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md px-4 py-2 text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>Trusted by Volunteers</span>
+            </div>
+            <!-- Badge 2 -->
+            <div class="flex items-center space-x-2 bg-blue-50 text-blue-600 border border-blue-200 rounded-md px-4 py-2 text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span>Community Support</span>
+            </div>
+            <!-- Badge 3 -->
+            <div class="flex items-center space-x-2 bg-rose-50 text-rose-600 border border-rose-200 rounded-md px-4 py-2 text-sm font-medium">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <span>Making a Difference</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+   
+         <footer class="bg-[#e5e7eb]/60 text-gray-500 py-10 mt-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Grid Navigation Links -->
+            <div class="grid grid-cols-2 md:grid-cols-5 text-center text-sm font-medium gap-y-4 gap-x-2 text-gray-600 mb-8">
+                <a href="#" class="hover:text-gray-900 transition">About Us</a>
+                <a href="#" class="hover:text-gray-900 transition">Our Programs</a>
+                <a href="#" class="hover:text-gray-900 transition">Volunteer</a>
+                <a href="#" class="hover:text-gray-900 transition">Donate</a>
+                <a href="#" class="hover:text-gray-900 transition">Contact</a>
+            </div>
+
+            <!-- Social Media Icons (Font Awesome) -->
+            <div class="flex justify-center items-center space-x-6 text-xl text-gray-400 mb-6">
+                <!-- Facebook -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <!-- Twitter/X -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="text-center text-xs text-gray-400 font-light tracking-wide">
+                © 2026 HopeHands Foundation. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+   
+
+</body>
+</html>

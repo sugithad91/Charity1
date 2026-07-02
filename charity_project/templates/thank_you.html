@@ -1,0 +1,218 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Causes - HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+   
+</head>
+<body class="bg-gray-50 font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="relative bg-white shadow-sm border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+                <span class="text-brand-dark-blue">■</span>
+                <span>HopeHands Foundation</span>
+            </div>
+            
+            <!-- Desktop Menu Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="hover:text-brand-dark-blue transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-brand-dark-blue transition">About Us</a>
+                <a href="{% url 'causes' %}" class="hover:text-brand-dark-blue transition">Causes</a>
+                <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue transition">Donate</a>
+                <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+            <!-- Hamburger Icon Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-brand-dark-blue" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+            <a href="{% url 'home' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">About Us</a>
+            <a href="{% url 'causes' %}" class="text-brand-dark-blue py-1 border-b border-gray-50 transition">Causes</a>
+            <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Donate</a>
+            <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue py-1 transition">Contact</a>
+            <a href="{% url 'donate' %}" class="bg-brand-dark-blue text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+        </div>
+    </nav>
+
+    <!-- JavaScript Toggle Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+   
+    <body class="bg-white font-sans antialiased m-0 p-0 text-gray-800">
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Hero Header Illustration Banner -->
+        <div class="w-full rounded-2xl overflow-hidden shadow-xs border border-gray-100 mb-10">
+            <!-- Replace src with your static banner image asset path -->
+            <img src="{% static 'images/img20.png' %}" 
+                 alt="Children smiling illustration" 
+                 class="w-full h-[380px] object-cover object-center">
+        </div>
+
+        <!-- Thank You Typography Header -->
+        <div class="text-center mb-10">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 flex items-center justify-center gap-2">
+                Thank You for Making a Difference <span class="text-rose-500">❤️</span>
+            </h1>
+            <p class="text-gray-600 text-sm md:text-base font-medium">Your kindness has brought hope, care, and support to those who need it the most.</p>
+        </div>
+
+        <!-- Impact Description Content -->
+        <div class="mb-10">
+            <h2 class="text-lg font-bold text-gray-900 mb-2.5">Your Impact</h2>
+            <p class="text-gray-600 text-xs md:text-sm leading-relaxed">
+                Your generous donation will directly support our mission to provide essential resources and opportunities to underserved communities. It will help us deliver critical services, empower individuals, and foster sustainable change.
+            </p>
+        </div>
+                <!-- Impact Cards Grid System -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            <!-- Card 1: Education -->
+            <div class="flex flex-col">
+                <div class="bg-amber-50/70 rounded-xl p-6 h-44 flex items-center justify-center mb-3 border border-amber-100/50">
+                    <img src="{% static 'images/img21.png' %}" alt="">
+                </div>
+                <h3 class="text-xs font-bold text-gray-900 mb-1">Educated a child for a month</h3>
+                <p class="text-[11px] text-emerald-600 font-medium leading-relaxed">Your contribution ensures a child receives quality education for an entire month.</p>
+            </div>
+
+            <!-- Card 2: Food / Meals -->
+            <div class="flex flex-col">
+                <div class="bg-amber-50/70 rounded-xl p-6 h-44 flex items-center justify-center mb-3 border border-amber-100/50">
+                    <img src="{% static 'images/img22.png' %}" alt="">
+                </div>
+                <h3 class="text-xs font-bold text-gray-900 mb-1">Provided meals for families</h3>
+                <p class="text-[11px] text-emerald-600 font-medium leading-relaxed">Your donation helps provide nutritious meals to families in need.</p>
+            </div>
+
+            <!-- Card 3: Healthcare -->
+            <div class="flex flex-col">
+                <div class="bg-amber-50/70 rounded-xl p-6 h-44 flex items-center justify-center mb-3 border border-amber-100/50">
+                    <img src="{% static 'images/img23.png' %}" alt="">
+                </div>
+                <h3 class="text-xs font-bold text-gray-900 mb-1">Supported basic healthcare</h3>
+                <p class="text-[11px] text-emerald-600 font-medium leading-relaxed">Your support aids in delivering essential healthcare services to those without access.</p>
+            </div>
+
+        </div>
+            <!-- Section 3: Your Support Can Go Even Further -->
+        <div class="border-t border-gray-100 pt-10 text-center max-w-3xl mx-auto">
+            <h2 class="text-base font-bold text-gray-900 mb-4 tracking-tight">Your Support Can Go Even Further</h2>
+            
+            <!-- Secondary Actions CTA Group -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-6">
+                <a href="{% url 'donate' %}" class="bg-emerald-600 text-white font-bold text-xs px-5 py-2.5 rounded-md hover:bg-emerald-700 shadow-xs transition">
+                    Donate Again
+                </a>
+                <button type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="bg-white border border-gray-300 text-gray-700 font-bold text-xs px-5 py-2.5 rounded-md hover:bg-gray-50 shadow-xs transition">
+                    Share This Cause
+                </button>
+            </div>
+
+            <p class="text-xs text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+                Consider making a recurring donation to ensure continuous support for our programs. Share our cause with your friends and family to help us reach more people.
+            </p>
+
+            <!-- Stay Connected Email Field Layout Wrapper -->
+            <div class="max-w-md mx-auto text-left mb-6">
+                <label class="block text-xs font-bold text-gray-900 mb-2 tracking-wide">Stay Connected</label>
+                <div class="relative rounded-md shadow-xs">
+                    <input type="email" placeholder="Receive email updates" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg text-xs placeholder-gray-500 text-gray-800 focus:outline-none focus:bg-white focus:border-blue-900 transition pr-10">
+                    <button class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-blue-900 transition">
+                        <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Become a Volunteer Anchor button -->
+            <div class="mb-10">
+                <a href="{% url 'contact' %}" class="inline-block bg-gray-100 text-gray-800 font-bold text-xs px-6 py-2.5 rounded-md hover:bg-gray-200 transition">
+                    Become a Volunteer
+                </a>
+            </div>
+
+            <!-- Baseline Signature Credit Footer -->
+            <footer class="text-[10px] text-gray-400 pt-4 border-t border-gray-50">
+                From all of us at Hope Foundation — thank you for believing in humanity.
+            </footer>
+        </div>
+    </main>
+   
+         <footer class="bg-[#e5e7eb]/60 text-gray-500 py-10 mt-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Grid Navigation Links -->
+            <div class="grid grid-cols-2 md:grid-cols-5 text-center text-sm font-medium gap-y-4 gap-x-2 text-gray-600 mb-8">
+                <a href="#" class="hover:text-gray-900 transition">About Us</a>
+                <a href="#" class="hover:text-gray-900 transition">Our Programs</a>
+                <a href="#" class="hover:text-gray-900 transition">Volunteer</a>
+                <a href="#" class="hover:text-gray-900 transition">Donate</a>
+                <a href="#" class="hover:text-gray-900 transition">Contact</a>
+            </div>
+
+            <!-- Social Media Icons (Font Awesome) -->
+            <div class="flex justify-center items-center space-x-6 text-xl text-gray-400 mb-6">
+                <!-- Facebook -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <!-- Twitter/X -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="text-center text-xs text-gray-400 font-light tracking-wide">
+                © 2026 HopeHands Foundation. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+   
+
+</body>
+</html>

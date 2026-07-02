@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body class="bg-white font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="relative bg-white shadow-xs border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+                <span class="text-blue-900">■</span>
+                <span>HopeHands Foundation</span>
+            </div>
+            
+            <!-- Desktop Menu Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="hover:text-blue-900 transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-blue-900 transition">About Us</a>
+                <a href="{% url 'causes' %}" class="hover:text-blue-900 transition">Causes</a>
+                <a href="{% url 'donate' %}" class="text-blue-900 border-b-2 border-blue-900 transition">Donate</a>
+                <a href="{% url 'contact' %}" class="hover:text-blue-900 transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+            <!-- Hamburger Icon Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-blue-900" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+            <a href="{% url 'home' %}" class="hover:text-blue-900 py-1 border-b border-gray-50 transition">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-blue-900 py-1 border-b border-gray-50 transition">About Us</a>
+            <a href="{% url 'causes' %}" class="hover:text-blue-900 py-1 border-b border-gray-50 transition">Causes</a>
+            <a href="{% url 'donate' %}" class="text-blue-900 py-1 border-b border-gray-50 transition">Donate</a>
+            <a href="{% url 'contact' %}" class="hover:text-blue-900 py-1 transition">Contact</a>
+            <a href="{% url 'donate' %}" class="bg-blue-900 text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6 tracking-tight">Make a Difference Today</h1>
+        <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-10">
+            Your generous donation will help us continue our mission to support communities in need. Choose an amount below or enter a custom amount to make a secure donation.
+        </p>
+        <!-- Form Element with Validation Configured -->
+        <form id="donationForm" method="POST" action="{% url 'donate' %}" class="space-y-10" novalidate>
+            {% csrf_token %}
+
+            <!-- Section 1: Donor Information -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-900 mb-6 tracking-tight">Donor Information</h2>
+                <div class="space-y-4 max-w-lg">
+                    <div>
+                        <input type="text" id="donorName" name="name" placeholder="Name" class="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:border-blue-900 transition">
+                        <p id="error-name" class="text-red-500 text-xs mt-1 hidden">Please enter your name.</p>
+                    </div>
+                    <div>
+                        <input type="email" id="donorEmail" name="email" placeholder="Email" class="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:border-blue-900 transition">
+                        <p id="error-email" class="text-red-500 text-xs mt-1 hidden">Please enter a valid email address.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="donorAddress" name="address" placeholder="Address" class="w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-gray-400 text-gray-800 focus:outline-none focus:border-blue-900 transition">
+                        <p id="error-address" class="text-red-500 text-xs mt-1 hidden">Please enter your address.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Select Donation Amount -->
+            <div>
+                <h2 class="text-lg font-bold text-gray-900 mb-6 tracking-tight">Select Donation Amount</h2>
+                
+                <!-- Amount Grid Options -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-md mb-4">
+                    <button type="button" onclick="setAmount(this, '500')" class="amount-btn border border-gray-300 font-semibold py-2.5 rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition text-sm">₹500</button>
+                    <button type="button" onclick="setAmount(this, '1000')" class="amount-btn border border-gray-300 font-semibold py-2.5 rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition text-sm">₹1000</button>
+                    <button type="button" onclick="setAmount(this, '2000')" class="amount-btn border border-gray-300 font-semibold py-2.5 rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition text-sm">₹2000</button>
+                    <button type="button" onclick="toggleCustomAmount(this)" class="amount-btn border border-gray-300 font-semibold py-2.5 rounded-lg text-gray-700 bg-gray-50 hover:bg-gray-100 transition text-sm">Custom</button>
+                </div>
+                
+                <!-- Explicit validation error tracking for amount selector -->
+                <p id="error-amount" class="text-red-500 text-xs mb-4 hidden">Please pick a set value or enter a custom donation amount.</p>
+
+                <!-- Hidden Input Field to store tracking payload values -->
+                <input type="hidden" id="donation-amount" name="amount">
+
+                <!-- Hidden Custom Amount Input Container -->
+                <div id="custom-amount-wrapper" class="hidden max-w-xs mb-6">
+                    <div class="relative rounded-lg shadow-xs">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 sm:text-sm">₹</span>
+                        </div>
+                        <input type="number" id="custom-amount-input" placeholder="0.00" class="w-full pl-8 pr-4 py-3 rounded-lg border border-gray-300 text-gray-800 focus:outline-none focus:border-blue-900 transition" min="1" oninput="updateCustomAmountValue()">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proceed Trigger button -->
+            <div>
+                <button type="button" onclick="openPaymentModal()" class="bg-blue-800 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-blue-900 transition duration-200">
+                    Proceed to Donate
+                </button>
+            </div>
+
+            <!-- PAYMENT OVERLAY MODAL -->
+            <div id="paymentModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4 backdrop-blur-xs transition-opacity duration-300">
+                <div class="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-300">
+                    
+                    <!-- Modal Header -->
+                    <div class="bg-gray-50 border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                        <h3 class="text-base font-bold text-gray-900 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-blue-900"></i>
+                            Secure Card Payment
+                        </h3>
+                        <button type="button" onclick="closePaymentModal()" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Modal Body Form Wrapper Fields -->
+                    <div class="p-6 space-y-4">
+                        <div id="payment-error-alert" class="bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg p-3 hidden flex items-start gap-2">
+                            <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            <span id="payment-error-text">Payment execution rejected. Please check your banking data.</span>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Cardholder Name</label>
+                            <input type="text" id="cardName" placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-blue-900 transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Card Number</label>
+                            <div class="relative">
+                                <input type="text" id="cardNumber" maxlength="19" placeholder="4111 2222 3333 4444" class="w-full pl-4 pr-10 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-blue-900 transition">
+                                <span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Expiration Date</label>
+                                <input type="text" id="cardExpiry" maxlength="5" placeholder="MM/YY" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-blue-900 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">CVC / CVV</label>
+                                <input type="password" id="cardCvc" maxlength="3" placeholder="***" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-blue-900 transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 px-6 py-4 border-t border-gray-100 flex items-center justify-end gap-3">
+                        <button type="button" onclick="closePaymentModal()" class="text-sm font-semibold text-gray-600 hover:text-gray-800 transition px-4 py-2">
+                            Cancel
+                        </button>
+                        <button type="button" onclick="validateAndSubmitPayment()" class="bg-blue-800 text-white font-semibold text-sm px-5 py-2.5 rounded-lg shadow-sm hover:bg-blue-900 transition">
+                            Submit Payment
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </main>
+    <script>
+        // Responsive Mobile Hamburger View Controller
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Form Tracking Amount Operations
+        const hiddenAmountInput = document.getElementById('donation-amount');
+        const customAmountWrapper = document.getElementById('custom-amount-wrapper');
+        const customAmountInput = document.getElementById('custom-amount-input');
+        const amountButtons = document.querySelectorAll('.amount-btn');
+
+        function clearActiveButtonStates() {
+            amountButtons.forEach(btn => {
+                btn.classList.remove('bg-blue-900', 'text-white', 'border-blue-900', 'hover:bg-blue-950');
+                btn.classList.add('bg-gray-50', 'text-gray-700', 'border-gray-300', 'hover:bg-gray-100');
+            });
+        }
+
+        function setAmount(buttonElement, value) {
+            clearActiveButtonStates();
+            customAmountWrapper.classList.add('hidden');
+            customAmountInput.value = '';
+            buttonElement.classList.remove('bg-gray-50', 'text-gray-700', 'border-gray-300', 'hover:bg-gray-100');
+            buttonElement.classList.add('bg-blue-900', 'text-white', 'border-blue-900', 'hover:bg-blue-950');
+            hiddenAmountInput.value = value;
+            document.getElementById('error-amount').classList.add('hidden');
+        }
+
+        function toggleCustomAmount(buttonElement) {
+            clearActiveButtonStates();
+            customAmountWrapper.classList.remove('hidden');
+            buttonElement.classList.remove('bg-gray-50', 'text-gray-700', 'border-gray-300', 'hover:bg-gray-100');
+            buttonElement.classList.add('bg-blue-900', 'text-white', 'border-blue-900', 'hover:bg-blue-950');
+            hiddenAmountInput.value = customAmountInput.value;
+            customAmountInput.focus();
+        }
+
+        function updateCustomAmountValue() {
+            hiddenAmountInput.value = customAmountInput.value;
+            if(customAmountInput.value > 0) {
+                document.getElementById('error-amount').classList.add('hidden');
+            }
+        }
+
+        // Validate Contact details profile structure before firing popup card modal
+        function checkContactFormFields() {
+            let isValid = true;
+            const name = document.getElementById('donorName');
+            const email = document.getElementById('donorEmail');
+            const address = document.getElementById('donorAddress');
+            
+            if (!name.value.trim()) {
+                document.getElementById('error-name').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('error-name').classList.add('hidden');
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('error-email').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('error-email').classList.add('hidden');
+            }
+
+            if (!address.value.trim()) {
+                document.getElementById('error-address').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('error-address').classList.add('hidden');
+            }
+
+            if (!hiddenAmountInput.value || parseFloat(hiddenAmountInput.value) <= 0) {
+                document.getElementById('error-amount').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('error-amount').classList.add('hidden');
+            }
+
+            return isValid;
+        }
+
+        const paymentModal = document.getElementById('paymentModal');
+        const alertArea = document.getElementById('payment-error-alert');
+        const alertText = document.getElementById('payment-error-text');
+
+        function openPaymentModal() {
+            if (checkContactFormFields()) {
+                paymentModal.classList.remove('hidden');
+                paymentModal.classList.add('flex');
+                alertArea.classList.add('hidden');
+            }
+        }
+
+        function closePaymentModal() {
+            paymentModal.classList.remove('flex');
+            paymentModal.classList.add('hidden');
+        }
+
+        // Auto format card character splitting rules
+        document.getElementById('cardNumber').addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+        });
+
+        // Auto format expiry slashes grouping parameter rules
+        document.getElementById('cardExpiry').addEventListener('input', function (e) {
+            let val = e.target.value.replace(/[^\d]/g, '');
+            if (val.length >= 2) {
+                e.target.value = val.substring(0, 2) + '/' + val.substring(2, 4);
+            } else {
+                e.target.value = val;
+            }
+        });
+
+        // Interactive Validation Engine workflow on submit payment actions
+        function validateAndSubmitPayment() {
+            const cardName = document.getElementById('cardName').value.trim();
+            const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
+            const cardExpiry = document.getElementById('cardExpiry').value.trim();
+            const cardCvc = document.getElementById('cardCvc').value.trim();
+
+            alertArea.classList.add('hidden');
+
+            if (!cardName) {
+                showPaymentError("Please provide the cardholder profile name.");
+                return;
+            }
+            if (cardNumber.length < 16 || isNaN(cardNumber)) {
+                showPaymentError("Invalid Card Number. Must contain exactly 16 numeric digits.");
+                return;
+            }
+            if (cardExpiry.length < 5 || !cardExpiry.includes('/')) {
+                showPaymentError("Invalid Expiry Format. Use standard MM/YY parameter tracking values.");
+                return;
+            }
+            if (cardCvc.length < 3 || isNaN(cardCvc)) {
+                showPaymentError("Invalid Security Code. CVC must match the 3-digit configuration on the back of the card.");
+                return;
+            }
+
+            // Everything is valid - fire submit operation directly to Django
+            document.getElementById('donationForm').submit();
+        }
+
+        function showPaymentError(message) {
+            alertText.innerText = message;
+            alertArea.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

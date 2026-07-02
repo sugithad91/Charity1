@@ -1,0 +1,260 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind v4 Theme Configuration -->
+   
+</head>
+<body class="bg-gray-50 font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="relative bg-white shadow-sm border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <!-- Logo -->
+            <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+                <span class="text-brand-dark-blue">■</span>
+                <span>HopeHands Foundation</span>
+            </div>
+            
+            <!-- Desktop Menu Links & CTA -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="hover:text-brand-dark-blue transition">Home</a>
+                <a href="{% url 'about' %}" class="text-brand-dark-blue border-b-2 border-brand-dark-blue transition">About Us</a>
+                <a href="{% url 'causes' %}" class="hover:text-brand-dark-blue transition">Causes</a>
+                <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue transition">Donate</a>
+                <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+            <!-- Hamburger Icon Button -->
+            <div class="lg:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-brand-dark-blue" aria-label="Toggle Menu">
+                    <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+            <a href="{% url 'home' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Home</a>
+            <a href="{% url 'about' %}" class="text-brand-dark-blue py-1 border-b border-gray-50 transition">About Us</a>
+            <a href="{% url 'causes' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Causes</a>
+            <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue py-1 border-b border-gray-50 transition">Donate</a>
+            <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue py-1 transition">Contact</a>
+            <a href="{% url 'donate' %}" class="bg-brand-dark-blue text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+        </div>
+    </nav>
+
+    <!-- JavaScript Toggle Script -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Main About Content Section -->
+    <main class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <!-- Main Heading -->
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+            About Us
+        </h1>
+        
+        <!-- Subheading -->
+        <h2 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 tracking-tight">
+            Our Story
+        </h2>
+
+        <!-- Story Paragraph -->
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed max-w-7xl mx-auto mb-12">
+            HopeHands Foundation was established in 2010 by Sarah Johnson and David Lee, two individuals driven by a shared vision of creating a world where every person has access to basic necessities and opportunities for a better life. Their journey began with a small community project, addressing immediate needs such as food and shelter for underprivileged families. Over the years, their dedication and the support of countless volunteers and donors have transformed HopeHands into a leading organization, impacting thousands of lives across various communities.
+        </p>
+
+        <!-- Illustration Graphic Vector Container -->
+        <div class="max-w-7xl mx-auto overflow-hidden rounded-2xl">
+            <!-- Ensure you place your about illustration image inside your static images folder -->
+            <img src="{% static 'images/img12.png' %}" alt="Our Story Illustration" class="w-full h-auto object-cover">
+        </div>
+    </main>
+        <!-- Vision & Mission Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12 text-center">
+        <!-- Section Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 tracking-tight">
+            Vision & Mission
+        </h2>
+        <!-- Vision & Mission Paragraph -->
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed max-w-7xl mx-auto">
+            Our vision is to build a world where every individual has the opportunity to thrive, free from poverty and injustice. We strive to empower communities, ensuring access to essential resources and fostering sustainable development. Our mission is to mobilize resources, engage volunteers, and collaborate with partners to deliver impactful programs that address the root causes of poverty and inequality. We are committed to transparency, accountability, and the ethical use of all resources entrusted to us.
+        </p>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="max-w-7xl mx-auto px-6 pb-20 text-center">
+        <!-- Section Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-12 tracking-tight">
+            Our Values
+        </h2>
+
+        <!-- Values Cards Grid (3 Columns on Desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+            
+            <!-- Value 1: Compassion -->
+            <div class="bg-white border border-gray-100 rounded-xl shadow-md p-8 text-left flex flex-col items-start transition hover:shadow-lg">
+                <!-- Icon Container -->
+                <div class="text-gray-700 text-3xl mb-4">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <!-- Title -->
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Compassion</h3>
+                <!-- Description -->
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                    We approach our work with empathy and understanding, recognizing the inherent dignity of every person.
+                </p>
+            </div>
+
+            <!-- Value 2: Collaboration -->
+            <div class="bg-white border border-gray-100 rounded-xl shadow-md p-8 text-left flex flex-col items-start transition hover:shadow-lg">
+                <!-- Icon Container -->
+                <div class="text-gray-700 text-3xl mb-4">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <!-- Title -->
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Collaboration</h3>
+                <!-- Description -->
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                    We believe in the power of partnerships and collective action to achieve lasting change.
+                </p>
+            </div>
+
+            <!-- Value 3: Integrity -->
+            <div class="bg-white border border-gray-100 rounded-xl shadow-md p-8 text-left flex flex-col items-start transition hover:shadow-lg">
+                <!-- Icon Container -->
+                <div class="text-gray-700 text-3xl mb-4">
+                    <i class="fa-regular fa-shield-check"></i>
+                </div>
+                <!-- Title -->
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Integrity</h3>
+                <!-- Description -->
+                <p class="text-gray-500 text-sm md:text-base leading-relaxed">
+                    We uphold the highest standards of honesty and ethical conduct in all our endeavors.
+                </p>
+            </div>
+
+        </div>
+    </section>
+        <!-- Our Team Section -->
+    <section class="max-w-7xl mx-auto px-6 pb-24 text-center">
+        <!-- Section Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-16 tracking-tight">
+            Our Team
+        </h2>
+
+        <!-- Team Members Grid (3 Columns on Desktop) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-12 ">
+            
+            <!-- Member 1: Sarah Johnson -->
+            <div class="flex flex-col items-center">
+                <!-- Circular Profile Image Container -->
+                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-sm border border-gray-100">
+                    <img src="{% static 'images/img13.png' %}" alt="Sarah Johnson" class="w-full h-full object-cover">
+                </div>
+                <!-- Name -->
+                <h3 class="text-lg font-bold text-gray-900 mb-1">Sarah Johnson</h3>
+                <!-- Role -->
+                <p class="text-gray-400 text-sm font-medium leading-tight max-w-[200px]">
+                    Co-Founder & Executive Director
+                </p>
+            </div>
+
+            <!-- Member 2: David Lee -->
+            <div class="flex flex-col items-center">
+                <!-- Circular Profile Image Container -->
+                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-sm border border-gray-100">
+                    <img src="{% static 'images/img14.png' %}" alt="David Lee" class="w-full h-full object-cover">
+                </div>
+                <!-- Name -->
+                <h3 class="text-lg font-bold text-gray-900 mb-1">David Lee</h3>
+                <!-- Role -->
+                <p class="text-gray-400 text-sm font-medium leading-tight max-w-[200px]">
+                    Co-Founder & Program Director
+                </p>
+            </div>
+
+            <!-- Member 3: Emily Carter -->
+            <div class="flex flex-col items-center">
+                <!-- Circular Profile Image Container -->
+                <div class="w-48 h-48 rounded-full overflow-hidden mb-6 shadow-sm border border-gray-100">
+                    <img src="{% static 'images/img15.png' %}" alt="Emily Carter" class="w-full h-full object-cover">
+                </div>
+                <!-- Name -->
+                <h3 class="text-lg font-bold text-gray-900 mb-1">Emily Carter</h3>
+                <!-- Role -->
+                <p class="text-gray-400 text-sm font-medium leading-tight max-w-[200px]">
+                    Volunteer Coordinator
+                </p>
+            </div>
+
+        </div>
+    </section>
+     <footer class="bg-[#e5e7eb]/60 text-gray-500 py-10 mt-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Grid Navigation Links -->
+            <div class="grid grid-cols-2 md:grid-cols-5 text-center text-sm font-medium gap-y-4 gap-x-2 text-gray-600 mb-8">
+                <a href="#" class="hover:text-gray-900 transition">About Us</a>
+                <a href="#" class="hover:text-gray-900 transition">Our Programs</a>
+                <a href="#" class="hover:text-gray-900 transition">Volunteer</a>
+                <a href="#" class="hover:text-gray-900 transition">Donate</a>
+                <a href="#" class="hover:text-gray-900 transition">Contact</a>
+            </div>
+
+            <!-- Social Media Icons (Font Awesome) -->
+            <div class="flex justify-center items-center space-x-6 text-xl text-gray-400 mb-6">
+                <!-- Facebook -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <!-- Twitter/X -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="text-center text-xs text-gray-400 font-light tracking-wide">
+                © 2026 HopeHands Foundation. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+
+</body>
+</html>

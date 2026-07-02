@@ -1,0 +1,380 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeHands Foundation</title>
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDarkBlue: '#1d3557',
+                        brandTeal: '#2a9d8f',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 font-sans antialiased m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
+<nav class="relative bg-white shadow-sm border-b border-gray-100 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 font-bold text-gray-800 text-lg md:text-2xl">
+            <span class="text-brandDarkBlue">■</span>
+            <span>HopeHands Foundation</span>
+        </div>
+        
+        <!-- Desktop Menu Links & CTA (Hidden on Mobile/Tablet) -->
+         <div class="hidden lg:flex items-center space-x-8 font-medium text-gray-600 text-lg md:text-xl">
+                <a href="{% url 'home' %}" class="text-brand-dark-blue border-b-2 border-brand-dark-blue transition">Home</a>
+                <a href="{% url 'about' %}" class="hover:text-brand-dark-blue transition">About Us</a>
+                <a href="{% url 'causes' %}" class="hover:text-brand-dark-blue transition">Causes</a>
+                <a href="{% url 'donate' %}" class="hover:text-brand-dark-blue transition">Donate</a>
+                <a href="{% url 'contact' %}" class="hover:text-brand-dark-blue transition">Contact</a>
+                <a href="{% url 'donate' %}" class="bg-blue-800 text-white px-5 py-2 rounded-md hover:bg-opacity-90 transition">Donate Now</a>
+            </div>
+
+        <!-- Hamburger Icon Button (Visible on Tablet & Mobile) -->
+        <div class="lg:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none focus:text-brandDarkBlue" aria-label="Toggle Menu">
+                <!-- Hamburger Icon -->
+                <svg id="menu-icon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <!-- Close Icon -->
+                <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile/Tablet Dropdown Drawer Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg px-6 py-4 flex flex-col space-y-4 font-medium text-gray-600 transition-all duration-300">
+        <a href="{% url 'home' %}" class="hover:text-brandDarkBlue py-1 border-b border-gray-50 transition">Home</a>
+        <a href="{% url 'about' %}" class="hover:text-brandDarkBlue py-1 border-b border-gray-50 transition">About Us</a>
+        <a href="{% url 'causes' %}" class="hover:text-brandDarkBlue py-1 border-b border-gray-50 transition">Causes</a>
+        <a href="{% url 'donate' %}" class="hover:text-brandDarkBlue py-1 border-b border-gray-50 transition">Donate</a>
+        <a href="{% url 'contact' %}" class="hover:text-brandDarkBlue py-1 transition">Contact</a>
+        <a href="{% url 'donate' %}" class="bg-brandDarkBlue text-white px-5 py-3 rounded-md hover:bg-opacity-90 transition text-center block font-semibold">Donate Now</a>
+    </div>
+</nav>
+
+<!-- JavaScript Toggle Script -->
+<script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        // Toggle the visibility of the mobile menu
+        mobileMenu.classList.toggle('hidden');
+        
+        // Toggle between the Hamburger and Close icons
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+</script>
+    
+
+    <!-- Hero Section Container -->
+    <header class="relative w-full min-h-[calc(100vh-73px)] max-w-7xl mx-auto flex items-center justify-center overflow-hidden bg-gray-500">
+        
+        <!-- Background Image Tag (As requested) -->
+        <!-- Replace 'hero_bg.jpg' with your actual filename once uploaded -->
+        <img src="{% static 'images/image4.png' %}" alt="Background Graphics" class="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-90 mix-blend-overlay">
+
+        <!-- Hero Content Overlay -->
+        <div class="relative z-10 max-w-4xl mx-auto text-center px-4 text-white flex flex-col items-center">
+            
+            <!-- Graphic/Text Placeholder Above Header -->
+            <div class="text-xl opacity-80 mb-2 font-semibold tracking-wider">safte work</div>
+            
+            <!-- Main Catchphrase -->
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-sm">
+                Together, We Can Change Lives
+            </h1>
+            
+            <!-- Supporting Subtext -->
+            <p class="text-lg md:text-xl font-light opacity-90 max-w-2xl mb-8 leading-relaxed">
+                Your kindness today can bring hope, health, and happiness to someone in need.
+            </p>
+            
+            <!-- Call To Action Buttons -->
+           <div class="flex flex-col sm:flex-row items-center gap-4">
+    <!-- Connected to the 'donate' url routing pattern -->
+    <a href="{% url 'donate' %}" class="w-full sm:w-auto bg-blue-900 text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-800 shadow-md transition text-center">
+        Donate Now
+    </a>
+    <!-- Connected to the 'volunteer' url routing pattern -->
+    <a href="{% url 'volunteer' %}" class="w-full sm:w-auto bg-white text-gray-800 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 shadow-md transition text-center">
+        Become a Volunteer
+    </a>
+</div>
+
+        </div>
+    </header>
+
+        <!-- Our Mission Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <!-- Section Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 tracking-tight">
+            Our Mission
+        </h2>
+        <!-- Mission Text -->
+        <p class="text-gray-700 text-base md:text-lg leading-relaxed ">
+            At HopeHands Foundation, our mission is to empower communities and transform lives through compassionate action 
+            and sustainable solutions. We are dedicated to providing essential resources, fostering education, and promoting well-being 
+            for those facing adversity. Together, we strive to build a brighter future, one hand at a time.
+        </p>
+    </section>
+
+       <!-- Our Causes Section -->
+    <section class="max-w-7xl mx-auto px-6 pb-20">
+        <!-- Section Heading -->
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 tracking-tight">
+            Our Causes
+        </h2>
+
+        <!-- Grid Cards Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            
+            <!-- Card 1: Education for Children -->
+            <div class="flex flex-col bg-white">
+                <div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 mb-4 aspect-[4/3]">
+                    <img src="{% static 'images/image5.png' %}" alt="Education for Children" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-bold text-gray-950 mb-2">Education for Children</h3>
+                <p class="text-gray-700 text-md leading-relaxed font-light">
+                    Providing quality education and resources to underprivileged children, ensuring they have the opportunity to succeed.
+                </p>
+            </div>
+
+            <!-- Card 2: Medical Support -->
+            <div class="flex flex-col bg-white">
+                <div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 mb-4 aspect-[4/3]">
+                    <img src="{% static 'images/image6.png' %}" alt="Medical Support" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-bold text-gray-950 mb-2">Medical Support</h3>
+                <p class="text-gray-700 text-md leading-relaxed font-light">
+                    Offering medical assistance and healthcare support to those in need, ensuring access to essential medical services.
+                </p>
+            </div>
+
+            <!-- Card 3: Food & Shelter -->
+            <div class="flex flex-col bg-white">
+                <div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 mb-4 aspect-[4/3]">
+                    <img src="{% static 'images/image7.png' %}" alt="Food & Shelter" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-bold text-gray-950 mb-2">Food & Shelter</h3>
+                <p class="text-gray-700 text-md leading-relaxed font-light">
+                    Providing food, shelter, and basic necessities to individuals and families facing hardship and homelessness.
+                </p>
+            </div>
+
+            <!-- Card 4: Disaster Relief -->
+            <div class="flex flex-col bg-white">
+                <div class="overflow-hidden rounded-2xl shadow-sm border border-gray-100 mb-4 aspect-[4/3]">
+                    <img src="{% static 'images/image8.png' %}" alt="Disaster Relief" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-bold text-gray-950 mb-2">Disaster Relief</h3>
+                <p class="text-gray-700 text-md leading-relaxed font-light">
+                    Responding swiftly to natural disasters and providing immediate relief and long-term support to affected communities.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Section Action Buttons -->
+        <div class="flex flex-row items-center justify-center gap-4">
+           <a href="{% url 'donate' %}"> <button class="bg-[#1e40af] text-white font-semibold text-lg px-12 py-2.5 rounded-md hover:bg-blue-900 shadow-sm transition">
+                Donate
+            </button></a>
+            <button class="bg-[#f3f4f6] text-gray-900 font-semibold text-lg px-12 py-2.5 rounded-md hover:bg-gray-200 border border-gray-200 shadow-sm transition">
+                Learn More
+            </button>
+        </div>
+    </section>
+        <!-- Impact Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-10 tracking-tight">Impact Section</h2>
+        
+        <!-- Impact Metric Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Metric Card 1 -->
+            <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200/60 transform transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:bg-gray-50/80">
+                <span class="text-sm font-semibold text-gray-600 block mb-1">Lives Helped</span>
+                <span class="text-3xl font-extrabold text-gray-900 tracking-tight">10,000+</span>
+            </div>
+
+            <!-- Metric Card 2 -->
+            <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200/60 transform transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:bg-gray-50/80">
+                <span class="text-sm font-semibold text-gray-600 block mb-1">Volunteers</span>
+                <span class="text-3xl font-extrabold text-gray-900 tracking-tight">500+</span>
+            </div>
+
+            <!-- Metric Card 3 -->
+            <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-200/60 transform transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md hover:bg-gray-50/80">
+                <span class="text-sm font-semibold text-gray-600 block mb-1">Projects Completed</span>
+                <span class="text-3xl font-extrabold text-gray-900 tracking-tight">120+</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Stories / Testimonials Section -->
+    <section class="max-w-7xl mx-auto px-6 py-16 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12 tracking-tight">Stories / Testimonials</h2>
+        
+        <!-- Testimonials Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Testimonial 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-gray-200">
+                <div>
+                    <!-- Header Info -->
+                    <div class="flex items-center space-x-3 mb-3">
+                        <img src="{% static 'images/img9.png' %}" alt="Sophia Carter" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-l font-bold text-gray-800 leading-tight">Sophia Carter</h4>
+                            <span class="text-xs text-gray-800">2023-08-15</span>
+                        </div>
+                    </div>
+                    <!-- Stars Layout -->
+                    <div class="flex text-gray-800 text-md space-x-0.5 mb-4">★ ★ ★ ★ ★</div>
+                    <!-- Body Block -->
+                    <p class="text-gray-900 text-l leading-relaxed font-light mb-6">
+                        "HopeHands Foundation has truly made a difference in my life. Their support helped me get back on my feet during a difficult time."
+                    </p>
+                </div>
+                <!-- Interaction Footer -->
+                <div class="flex items-center space-x-6 text-xs text-gray-400 font-medium border-t border-gray-50 pt-4">
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👍</span> <span>12</span>
+                    </button>
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👎</span> <span>2</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-gray-200">
+                <div>
+                    <!-- Header Info -->
+                    <div class="flex items-center space-x-3 mb-3">
+                        <img src="{% static 'images/img10.png' %}" alt="Ethan Bennett" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-l font-bold text-gray-800 leading-tight">Ethan Bennett</h4>
+                            <span class="text-xs text-gray-800">2023-07-22</span>
+                        </div>
+                    </div>
+                    <!-- Stars Layout -->
+                    <div class="flex text-gray-800 text-l space-x-0.5 mb-4">★ ★ ★ ★ ★</div>
+                    <!-- Body Block -->
+                    <p class="text-gray-900 text-l leading-relaxed font-light mb-6">
+                        "Volunteering with HopeHands has been an incredibly rewarding experience. Seeing the impact we make is truly inspiring."
+                    </p>
+                </div>
+                <!-- Interaction Footer -->
+                <div class="flex items-center space-x-6 text-xs text-gray-400 font-medium border-t border-gray-50 pt-4">
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👍</span> <span>15</span>
+                    </button>
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👎</span> <span>1</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between transform transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-gray-200">
+                <div>
+                    <!-- Header Info -->
+                    <div class="flex items-center space-x-3 mb-3">
+                        <img src="{% static 'images/img11.png' %}" alt="Olivia Hayes" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <h4 class="text-l font-bold text-gray-800 leading-tight">Olivia Hayes</h4>
+                            <span class="text-xs text-gray-400">2023-06-10</span>
+                        </div>
+                    </div>
+                    <!-- Stars Layout -->
+                    <div class="flex text-gray-800 text-l space-x-0.5 mb-4">★ ★ ★ ★ ★</div>
+                    <!-- Body Block -->
+                    <p class="text-gray-800 text-l leading-relaxed font-light mb-6">
+                        "The dedication and compassion of HopeHands Foundation are unmatched. They are a beacon of hope for so many."
+                    </p>
+                </div>
+                <!-- Interaction Footer -->
+                <div class="flex items-center space-x-6 text-xs text-gray-400 font-medium border-t border-gray-50 pt-4">
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👍</span> <span>10</span>
+                    </button>
+                    <button class="flex items-center space-x-1.5 hover:text-gray-600 transition">
+                        <span>👎</span> <span>3</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+        <!-- Footer Section -->
+       <!-- Footer Section -->
+    <footer class="bg-[#e5e7eb]/60 text-gray-500 py-10 mt-16 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Grid Navigation Links -->
+            <div class="grid grid-cols-2 md:grid-cols-5 text-center text-sm font-medium gap-y-4 gap-x-2 text-gray-600 mb-8">
+                <a href="#" class="hover:text-gray-900 transition">About Us</a>
+                <a href="#" class="hover:text-gray-900 transition">Our Programs</a>
+                <a href="#" class="hover:text-gray-900 transition">Volunteer</a>
+                <a href="#" class="hover:text-gray-900 transition">Donate</a>
+                <a href="#" class="hover:text-gray-900 transition">Contact</a>
+            </div>
+
+            <!-- Social Media Icons (Font Awesome) -->
+            <div class="flex justify-center items-center space-x-6 text-xl text-gray-400 mb-6">
+                <!-- Facebook -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <!-- Twitter/X -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <!-- LinkedIn -->
+                <a href="#" class="hover:text-gray-600 transition" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- Copyright Line -->
+            <div class="text-center text-xs text-gray-400 font-light tracking-wide">
+                © 2026 HopeHands Foundation. All rights reserved.
+            </div>
+
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+</html>
